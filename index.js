@@ -27,10 +27,17 @@ function refreshBest(ipList) {
 function refreshIpList() {
     chinazPing(config.host, {times: config.refreshIpList.retry.time, interval: config.refreshIpList.retry.interval})
     .then(res => {
-        const sumIpList = Array.from(new Set([...ipList, ...res]))
+        const sumIpList = Array.from(
+            new Set(
+                [...ipList, ...res]
+                // remove ipv6 addresses and empty addresses
+                .filter(item => !!item && !/\:/.test(item))
+            )
+        )
         console.log(`available servers count: ${sumIpList.length}`)
         if(config.saveChinazResult) {
-            fs.readFileSync('./ip_list.txt', sumIpList.join('\n'), 'utf-8')
+            fs.writeFileSync('./ip_list.txt', sumIpList.join('\n'), 'utf-8')
+            console.log(`save chinaz results successfully`)
         }
         refreshBest(sumIpList)
     })

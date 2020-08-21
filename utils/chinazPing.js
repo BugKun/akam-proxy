@@ -6,7 +6,7 @@ const { retry } = require('async')
 
 function chinazPing (host, options) {
     return new Promise((resolve, reject) => {
-        request.get('http://ping.chinaz.com/' + host)
+        request.get('https://ping.chinaz.com/' + host)
         .then(res => {
             const $ = cheerio.load(res.text)
             const enkey = $('#enkey').val()
@@ -22,7 +22,7 @@ function chinazPing (host, options) {
                     retry(
                         { times: options.retryTime, interval: options.waittingInterval },
                         (retry_callback) => {
-                            request.post('http://ping.chinaz.com/iframe.ashx?t=ping')
+                            request.post('https://ping.chinaz.com/iframe.ashx?t=ping')
                                 .type('form')
                                 .send({
                                     guid,
