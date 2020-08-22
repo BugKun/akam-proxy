@@ -21,7 +21,7 @@ npm start
 
 ## 使用
 配置浏览器代理到配置文件配置的端口，例如使用默认端口  
-`http://127.0.0.1:7070`  
+`http://127.0.0.1:2689`  
 推荐使用插件[Proxy SwitchyOmega](https://github.com/FelisCatus/SwitchyOmega)来指定代理
 
 ## 扩展

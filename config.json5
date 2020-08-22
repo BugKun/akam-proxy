@@ -2,7 +2,7 @@
     /* B站海外CDN域名（除非你知道这是什么，否则请不要修改） */
     host: 'upos-hz-mirrorakam.akamaized.net',
     /* 代理服务器运行的端口 */
-    port: 7070,
+    port: 2689,
     /* 重新查找最优节点的间隔时间(s) */
     refreshInterval: 3600,
     refreshIpList: {
