@@ -36,8 +36,11 @@ function refreshIpList() {
         )
         console.log(`available servers count: ${sumIpList.length}`)
         if(config.saveChinazResult) {
-            fs.writeFileSync('./ip_list.txt', sumIpList.join('\n'), 'utf-8')
-            console.log(`save chinaz results successfully`)
+            fs.writeFile('./ip_list.txt', sumIpList.join('\n'), 'utf-8', (error) => {
+                if(!error) {
+                    console.log(`save chinaz results successfully`)
+                }
+            })
         }
         refreshBest(sumIpList)
     })
