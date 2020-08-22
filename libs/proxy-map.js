@@ -5,7 +5,7 @@ module.exports = (mapper, options) => {
     const result = options
 
     if(hostname == mapper.originalHost) {
-        result.hostname = mapper.ip
+        result.hostname = mapper.host
     }
 
     if(hostname !== result.hostname) {
