@@ -45,7 +45,8 @@ function refreshIpList() {
         refreshBest(sumIpList)
     })
     .catch(err => {
-        console.log(err, 'err')
+        console.log('get chinaz results error:', err)
+        refreshBest(sumIpList)
     })
 }
 
