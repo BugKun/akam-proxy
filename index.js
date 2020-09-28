@@ -6,7 +6,7 @@ const getGoodServer = require('./utils/getGoodServer')
 const config = json5.parse(fs.readFileSync('./config.json5', 'utf-8'))
 
 const ipListText = fs.readFileSync('ip_list.txt', 'utf-8')
-const ipList = ipListText.split(/\r\n|\r|\n/)
+let ipList = ipListText.split(/\r\n|\r|\n/)
 
 let best = {host: ipList[0], avg: Number.MAX_SAFE_INTEGER, originalHost: config.host}
 
@@ -38,6 +38,7 @@ function refreshIpList() {
         if(config.saveChinazResult) {
             fs.writeFile('./ip_list.txt', sumIpList.join('\n'), 'utf-8', (error) => {
                 if(!error) {
+                    ipList = sumIpList
                     console.log(`save chinaz results successfully`)
                 }
             })
@@ -46,7 +47,7 @@ function refreshIpList() {
     })
     .catch(err => {
         console.log('get chinaz results error:', err)
-        refreshBest(sumIpList)
+        refreshBest(ipList)
     })
 }
 
