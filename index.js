@@ -52,7 +52,7 @@ function refreshIpList() {
 }
 
 refreshIpList()
-setInterval(refreshBest, config.refreshInterval * 1000)
+setInterval(() => refreshBest(ipList), config.refreshInterval * 1000)
 setInterval(refreshIpList, config.refreshIpList.interval * 1000)
 
 proxy(best, config.port)
