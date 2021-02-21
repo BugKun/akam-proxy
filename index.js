@@ -1,9 +1,9 @@
 const proxy = require('./libs/proxy')
 const fs = require('fs')
-const json5 = require('json5')
 const chinazPing = require('./utils/chinazPing')
 const getGoodServer = require('./utils/getGoodServer')
-const config = json5.parse(fs.readFileSync('./config.json5', 'utf-8'))
+require('json5/lib/register')
+const config = require('./config.json5')
 
 const ipListText = fs.readFileSync('ip_list.txt', 'utf-8')
 let ipList = ipListText.split(/\r\n|\r|\n/)
